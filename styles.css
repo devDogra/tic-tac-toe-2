@@ -1,0 +1,54 @@
+* {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+body {
+  border: 5px solid red;
+  height: 100vh;
+}
+
+.player-info-form-container {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  position: absolute;
+
+  background-color: blue;
+}
+.player-info-form-container.show {
+  display: block;
+}
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: cyan;
+
+  display: none;
+}
+.modal-container.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  border: 10px solid red;
+}
+.board-container {
+  border: 5px solid purple;
+}
+.board {
+  border: 5px solid orange;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+
+  height: min(35rem, 50vw);
+  width: min(35rem, 50vw);
+}

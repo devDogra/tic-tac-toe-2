@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Tic tac toe</title>
+</head>
+<body>
+    <h1>Tic tac toe</h1>
+
+    <div class="player-info-form-container show">
+
+        <form action="" class="player-info-form">
+            <div class="player-1">
+                
+                <label for="player-1-name">P1 Name: </label>
+                <input type="text" id="player-1-name">
+
+                <label for="player-1-mark">P1 Mark:</label>
+                <input type="text" id="player-1-mark">
+
+                <label for="player-1-ai">AI</label>
+                <input type="checkbox" id="player-1-ai">
+
+            </div>
+
+            <div class="player-2">
+                
+                <label for="player-2-name">P2 Name: </label>
+                <input type="text" id="player-2-name">
+
+                <label for="player-2-mark">P2 Mark:</label>
+                <input type="text" id="player-2-mark">
+
+                <label for="player-2-ai">AI</label>
+                <input type="checkbox" id="player-2-ai">
+
+            </div>
+
+            <button type="submit">Start</button>
+        </form>
+
+    </div>
+
+
+    <div class="modal-container">
+        <div class="modal">
+            <p class="modal-msg">The game is a draw</p>
+            <button class="play-again-btn">Play again</button>
+        </div>
+    </div>
+    <div class="board-container">
+        <div class="board">
+            <div class="cell" data-cell-idx="1"></div>
+            <div class="cell" data-cell-idx="2"></div>
+            <div class="cell" data-cell-idx="3"></div>
+            <div class="cell" data-cell-idx="4"></div>
+            <div class="cell" data-cell-idx="5"></div>
+            <div class="cell" data-cell-idx="6"></div>
+            <div class="cell" data-cell-idx="7"></div>
+            <div class="cell" data-cell-idx="8"></div>
+            <div class="cell" data-cell-idx="9"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
