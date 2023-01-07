@@ -1,3 +1,7 @@
+//  TODO: Clean up code
+// TODO: DOnt export everything
+// TODO: Styling
+
 function Player(name, mark, ai) {
   const proto = {
     getName: function () {
@@ -68,11 +72,15 @@ const Board = (function () {
   }
 
   function hasEmptyCells() {
-    board.forEach((row) => {
-      row.forEach((cell) => {
-        if (cell === null) return true;
-      });
-    });
+    for (let i = 0; i != SIZE; i++) {
+      for (let j = 0; j != SIZE; j++) {
+        console.log("BRD =" + board[i][j]);
+        if (board[i][j] == null) {
+          console.log("RETTURNING TRUE");
+          return true;
+        }
+      }
+    }
 
     return false;
   }
@@ -108,8 +116,11 @@ const displayController = (function () {
     Game.initPlayers(name1, mark1, name2, mark2, ai1, ai2);
   });
 
-  function handleGameEnd(status) {
+  function handleGameEnd() {
     renderBoard();
+    let status = Game.seeStatus();
+    console.log("ST " + status);
+    // return;
     let msg = "";
     if (status === "DRAW") {
       msg = "The game ends in a draw";
@@ -138,6 +149,7 @@ const displayController = (function () {
   cells.forEach((cell) => {
     cell.addEventListener("click", (e) => {
       Game.playRound(cell);
+      Board.show();
       renderBoard();
       const status = Game.seeStatus();
       if (status === "DRAW" || status !== null) {
@@ -223,36 +235,37 @@ const Game = (function () {
   // Returns "DRAW" if there is a draw
   // Else returns null
 
+  function same(a, b, c) {
+    return a === b && b === c;
+  }
   function checkWin() {
     const SIZE = Board.SIZE;
 
-    // rows
-    for (let i = 0; i != SIZE; i++) {
-      const row = Board.getRow(i);
-      const mark = row[0];
-      if (row.every((x) => x === mark)) {
-        return mark;
-      }
-    }
+    const r1 = same(Board.at(0, 0), Board.at(0, 1), Board.at(0, 2));
+    const r2 = same(Board.at(1, 0), Board.at(1, 1), Board.at(1, 2));
+    const r3 = same(Board.at(2, 0), Board.at(2, 1), Board.at(2, 2));
 
-    // cols
-    for (let j = 0; j != SIZE; j++) {
-      const col = Board.getCol(j);
-      const mark = col[0];
-      if (col.every((x) => x === mark)) return mark;
-    }
+    const c1 = same(Board.at(0, 0), Board.at(1, 0), Board.at(2, 0));
+    const c2 = same(Board.at(0, 1), Board.at(1, 1), Board.at(2, 1));
+    const c3 = same(Board.at(0, 2), Board.at(1, 2), Board.at(2, 2));
 
-    // diags
-    if (Board.getDiag(1).every((x) => x === Board.at(1, 1)))
-      return Board.at(1, 1);
-    if (Board.getDiag(2).every((x) => x === Board.at(1, 1)))
-      return Board.at(1, 1);
+    const d1 = same(Board.at(0, 0), Board.at(1, 1), Board.at(2, 2));
+    const d2 = same(Board.at(0, 2), Board.at(1, 1), Board.at(2, 0));
 
-    // If we cant find a win, and board is full
-    if (Board.hasEmptyCells() === false) {
+    if (r1) return Board.at(0, 0);
+    if (r2) return Board.at(1, 1);
+    if (r3) return Board.at(2, 2);
+
+    if (c1) return Board.at(0, 0);
+    if (c2) return Board.at(1, 1);
+    if (c3) return Board.at(2, 2);
+
+    if (d1 || d2) return Board.at(1, 1);
+
+    console.log("EMPTY CELLS = " + Board.hasEmptyCells());
+    if (!Board.hasEmptyCells()) {
       return "DRAW";
     }
-
     return null;
   }
 

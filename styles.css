@@ -1,11 +1,19 @@
 * {
-  border: 1px solid black;
   margin: 0;
   padding: 0;
 }
+:root {
+  font-family: "Times New Roman", Times, serif;
+}
 body {
-  border: 5px solid red;
   height: 100vh;
+  font-size: calc(min(5rem, min(20vw, 20vh)));
+}
+h1 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: min(4rem, 8vw);
+  padding: 2vw;
 }
 
 .player-info-form-container {
@@ -16,20 +24,66 @@ body {
   left: 0;
   position: absolute;
 
-  background-color: blue;
+  box-shadow: inset -12px -36px 300px 45px rgba(0, 0, 0, 1);
+  background-color: rgba(34, 33, 33, 0.774);
 }
 .player-info-form-container.show {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.player-info-form {
+  margin: 0 auto;
+  font-size: 0.3em;
+  width: 50vw;
+
+  text-align: center;
+
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white;
+}
+.player-info-form > div {
+  border-top: 1px solid grey;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.player-info-form input {
+  font-size: 0.9em;
+  width: 70%;
+  padding: 0 1em;
+
+  flex: 3;
+}
+.player-info-form label {
+  flex: 2;
+}
+.player-info-form button[type="submit"] {
+  font-size: 1em;
+  width: 100%;
+  padding: 0.3em;
+  margin: 1em 0 0 0;
+  cursor: pointer;
+  color: inherit;
+  background-color: rgba(1, 1, 1, 0);
+}
+
+.player-info-form button[type="submit"]:hover {
+  transition: all 0.3s;
+  background-color: rgba(1, 1, 1, 0.5);
+}
+
 .modal-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: cyan;
+  background-color: rgba(34, 33, 33, 0.774);
 
   display: none;
+  font-size: calc(min(5rem, min(20vw, 20vh)));
 }
 .modal-container.show {
   display: flex;
@@ -37,18 +91,48 @@ body {
   align-items: center;
 }
 .modal {
-  border: 10px solid red;
+  color: white;
+  text-shadow: 3px 5px black;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+}
+
+.modal button {
+  font-size: 50%;
+  margin: 2rem 0;
+  border-radius: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+
+  color: inherit;
+  background-color: rgba(1, 1, 1, 0);
+}
+.modal button:hover {
+  transition: all 0.3s;
+  background-color: rgba(1, 1, 1, 0.5);
 }
 .board-container {
-  border: 5px solid purple;
 }
 .board {
-  border: 5px solid orange;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 33%;
+  height: calc(min(30rem, min(80vh, 80vw)));
+  width: calc(min(30rem, min(80vh, 80vw)));
+  margin: auto;
 
-  height: min(35rem, 50vw);
-  width: min(35rem, 50vw);
+  gap: 0.5%;
+
+  background-color: grey;
+
+  text-align: center;
+  font-size: calc(min(10rem, min(20vw, 20vh)));
+}
+.cell {
+  background-color: white;
 }
